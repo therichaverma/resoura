@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Resoura
 
-## Getting Started
+The next right thing to learn, picked for you.
 
-First, run the development server:
+Resoura is a learning companion for the web. It asks what you're learning, then gives you three good picks a day, each with a short "why this, now" line. Open one, come back, and tell it how it went.
+
+## Status: frontend draft
+
+The primary flow works end to end with sample data:
+
+welcome, sign-in (stub), four onboarding questions, loading doodle, three picks, open a pick in a new tab, come back and rate it.
+
+Not yet built: real AI picks, real sign-in, "something else today", My sources, topic switching. See the plan for the backend design (Gemini with Google Search, Supabase, once-a-day cached picks).
+
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. The footer has a "Start over" link that clears the saved draft state.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where things are
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `components/` the screens: Welcome, SignIn, Onboarding, Loader (line-drawn doodles), Home, PickTile, RatingCard
+- `lib/picks.ts` the one function the backend will replace (`getPicks`)
+- `lib/storage.ts` all persistence, currently localStorage, ready to move to Supabase
+- `app/globals.css` colors and motion tokens (forest, grass, moss, leaf, paper, azure)
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js (App Router), React, TypeScript, Tailwind CSS 4. Fonts: Host Grotesk and Geist Mono.
